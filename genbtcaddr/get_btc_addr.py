@@ -13,7 +13,7 @@ platform = sys.platform
 print("platform: " + platform)
 if 'darwin' == platform:
     DLL_PATH = "/Users/erkoliu/Documents/workspace/genbtcaccount/getbtc/build/libgenbtcaddr.dylib"
-elif 'linux' == platform:
+elif ('linux' == platform or 'linux2' == platform):
     DLL_PATH = "../getbtc/build/libgenbtcaddr.so"
 else:
     DLL_PATH = "./../x64/Debug/getbtc.dll"
