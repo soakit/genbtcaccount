@@ -27,13 +27,14 @@ balance:0.00000000
 *******************continue find!*******************
 ```
 
-linux环境中使用下述使用编译libgenbtcaddr.so
+linux/mac环境中使用下述使用编译libgenbtcaddr.so
 
 ```shell
 cd getbtc
 mkdir build
 cd build
 cmake ..
+make
 ```
 
 之后启动程序：
@@ -42,8 +43,6 @@ cmake ..
 cd genbtcaddr
 python get_btc_addr.py
 ```
-
-
 
 ------
 

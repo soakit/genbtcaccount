@@ -4,12 +4,16 @@ import sys
 import ctypes
 from ctypes import *
 import logging
-import _thread
+# import _thread
 from multiprocessing import cpu_count
+import time
 
 import get_bitcoin as bt
 platform = sys.platform
-if 'linux' == platform:
+print("platform: " + platform)
+if 'darwin' == platform:
+    DLL_PATH = "/Users/erkoliu/Documents/workspace/genbtcaccount/getbtc/build/libgenbtcaddr.dylib"
+elif 'linux' == platform:
     DLL_PATH = "../getbtc/build/libgenbtcaddr.so"
 else:
     DLL_PATH = "./../x64/Debug/getbtc.dll"
@@ -41,7 +45,7 @@ def gen_btc_account(mnemonic, passphrase, s):
 def get_btc_banlance(mnemonic, pri, btc_addr):
     btc_banlance = bt.get_bitcoin_balance(btc_addr)
     if bt.is_zero_balance(btc_banlance):
-        notification(mnemonic, pri, btc_addr)
+        notification(mnemonic, pri, btc_addr, btc_banlance)
         return 1
     else:
         print("*******************continue find!*******************")
@@ -60,10 +64,10 @@ def main_run_btc_(thread_index):
             mnemonic = mn_arr.decode("utf-8").strip(b'\x00'.decode())
             
             # 2.通过助记词生成私钥和地址
-            mn_b = bytes(mnemonic,encoding='utf-8')
-            passphrase = bytes('',encoding='utf-8')
-            print(mn_b)
-            print(passphrase)
+            mn_b = bytes(mnemonic)
+            passphrase = bytes('')
+            print("mn_b:" + mn_b)
+            print("passphrase:" + passphrase)
             
             array_pri_type = c_char * 64
             pri = array_pri_type()
@@ -84,13 +88,14 @@ def main_run_btc_(thread_index):
                 print(btc.pri.decode())
                 print(btc.addr.decode())
                 get_btc_banlance(mn_b, btc.pri.decode(), btc.addr.decode())
-            
+
+            time.sleep(2.4)
             
         except Exception as err:
             logging.exception(err)
             print("------------error, thread_index:-----------".format(thread_index))
             print(err)
-        
+
         print("-----thead:{}---{}--{}-----".format(thread_index,main_index, sub_index))
         sub_index = sub_index + 1
         if sub_index >= 1000:
@@ -98,16 +103,17 @@ def main_run_btc_(thread_index):
             sub_index = 0
 
 def thread_run():
-    cpu_num = cpu_count()
-    for i in range(cpu_num):
-        _thread.start_new_thread(main_run_btc_, (i+1,))
+    main_run_btc_(1)
+    # cpu_num = cpu_count()
+    # for i in range(cpu_num):
+    #     _thread.start_new_thread(main_run_btc_, (i+1,))
 
 if __name__ == "__main__":
     main_index = 0
     sub_index = 0
     thread_run()
-    while 1:
-        pass
+    # while 1:
+    #     pass
 
     
         

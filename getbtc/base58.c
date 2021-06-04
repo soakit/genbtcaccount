@@ -21,7 +21,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 #include<stdio.h>
-#include<malloc.h>
+// #include<malloc.h>
+#include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
 #include <sys/types.h>

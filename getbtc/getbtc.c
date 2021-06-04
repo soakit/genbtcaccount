@@ -8,10 +8,11 @@
 #include "bip32_bip39.h"
 #include "ripemd160.h"
 #include "bech32.h"
+#include "memzero.h"
 
 #include "getbtc.h"
 
-// Ô¤´¦Àí
+// Ô¤ï¿½ï¿½ï¿½ï¿½
 int pre_process_mnemonic(char  *mnemonic, char  *passphrase, uint8_t* bip39_seed)
 {
 	if (mnemonic_check(mnemonic)) {
@@ -99,7 +100,7 @@ int hdnode_serialize(HDNode* node, uint8_t* bip39_seed, int Purpose, int Coin, u
 
 }
 
-// bc1µØÖ·
+// bc1ï¿½ï¿½Ö·
 void get_btc_address_bc(uint8_t* pubkey, char* addr)
 {
 	uint8_t addresshash[128] = { 0 };

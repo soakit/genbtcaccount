@@ -1,6 +1,5 @@
 # -*-coding:utf-8 -*-
 import logging
-import _thread
 import gen_account   as ac
 import get_bitcoin as bt
 

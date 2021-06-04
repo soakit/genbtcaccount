@@ -23,7 +23,8 @@
 #include "base32.h"
 
 #include <string.h>
-#include <malloc.h>
+// #include <malloc.h>
+#include <stdlib.h>
 
 const char *BASE32_ALPHABET_RFC4648 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ23456789";
 

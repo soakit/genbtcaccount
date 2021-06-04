@@ -3,7 +3,8 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdint.h>
-#include <malloc.h>
+// #include <malloc.h>
+#include <stdlib.h>
 
 void StrToHex(unsigned char *pbDest, char *pszSrc, int nLen)
 {
@@ -96,19 +97,19 @@ char *tohex(const uint8_t *bin, size_t l)
 void strtolower(char *str)
 {
 	for (int i = 0; i < strlen(str); i++) {
-		if (str[i] >= 'A'&&str[i] <= 'Z')//±íÊ¾ÊÇ´óÐ´×ÖÄ¸ 
+		if (str[i] >= 'A'&&str[i] <= 'Z')//ï¿½ï¿½Ê¾ï¿½Ç´ï¿½Ð´ï¿½ï¿½Ä¸ 
 			str[i] += 32;
-		// else if (a[i] >= 'a'&&a[i] <= 'z')//±íÊ¾ÊÇÐ¡Ð´×ÖÄ¸ 
+		// else if (a[i] >= 'a'&&a[i] <= 'z')//ï¿½ï¿½Ê¾ï¿½ï¿½Ð¡Ð´ï¿½ï¿½Ä¸ 
 		//	 a[i] -= 32;
 	}
 
 }
 
-/* {{{ ²éÕÒ×Ö·û´®Ê×´Î³öÏÖµÄÎ»ÖÃ£¬Ã»ÓÐÕÒµ½·µ»Ø -1£¬Á½¸ö×Ö·û´®ÏàµÈ·µ»Ø 0
-ÔÚGCCÏÂÊ¹ÓÃC99£º
+/* {{{ ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½×´Î³ï¿½ï¿½Öµï¿½Î»ï¿½Ã£ï¿½Ã»ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ -1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ 0
+ï¿½ï¿½GCCï¿½ï¿½Ê¹ï¿½ï¿½C99ï¿½ï¿½
 int strpos(const char *haystack,const char *needle, _Bool ignorecase = 0)
-_Bool ignorecase =1 ºöÂÔ´óÐ¡Ð´
-Ê±¼ä£º2012-08-17 By Dewei
+_Bool ignorecase =1 ï¿½ï¿½ï¿½Ô´ï¿½Ð¡Ð´
+Ê±ï¿½ä£º2012-08-17 By Dewei
 */
 int strpos(const char *haystack, const char *needle, bool ignorecase)
 {
